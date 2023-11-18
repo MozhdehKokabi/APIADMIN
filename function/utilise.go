@@ -25,7 +25,7 @@ func GenerateJWT(username string) (string, error) {
 
 func CheckPassword(username, password string) bool {
 	var storedPassword string
-	err := repository.Db.QueryRow("select p assword from students where username= $1", username).Scan(&storedPassword)
+	err := repository.Db.QueryRow("select password from students where username= $1", username).Scan(&storedPassword)
 	if err != nil {
 		return false
 	}

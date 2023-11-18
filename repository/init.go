@@ -3,14 +3,15 @@ package repository
 import (
 	"database/sql"
 	"fmt"
+	"os"
 	"strconv"
 )
 
-var port string = "5432"
-var host string = "localhost"
-var user string = "postgres"
-var password string = "moonmk2004"
-var dbname string = "edu"
+var port string = os.Getenv("POSTGRES_PORT")
+var host string = os.Getenv("POSTGRES_HOST")
+var user string = os.Getenv("POSTGRES_USER")
+var password string = os.Getenv("POSTGRES_PASSWORD")
+var dbname string = os.Getenv("POSTGRES_DBNAME")
 
 var Db *sql.DB
 

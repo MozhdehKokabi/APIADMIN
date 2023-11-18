@@ -1,19 +1,17 @@
 package models
 
-type User struct {
+type Admin struct {
 	Password string
 	UserName string
 	Email    string
-	Phone    int
-	Address  string
 	Role     string
 	Id       uint
 }
-type ReqUser struct {
+
+
+type ReqAdmin struct {
 	Password string `json:"password"`
 	UserName string `json:"username"`
 	Email    string `json:"email"`
-	Phone    int    `json:"phone"`
-	Address  string `json:"address"`
+	Id       uint   `json:"id"`
 }
-

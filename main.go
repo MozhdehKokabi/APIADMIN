@@ -1,7 +1,7 @@
 package main
 
 import (
-	"APIADMIN/admin"
+	"APIADMIN/CRUD"
 	"APIADMIN/handlers"
 	"APIADMIN/repository"
 
@@ -26,7 +26,7 @@ func main() {
 	e.GET("/", admin.ReadUser)
 	e.POST("/signupUser", handlers.SignUpUser)
 	e.POST("/loginAdmin", handlers.LogInAdmin)
-	e.POST("/createwebsite", handlers.Createwebsite)
+	e.POST("/createwebsite", admin.Createwebsite)
 
 	e.DELETE("/deletewebsite", admin.DeleteWebsite)
 	e.PUT("/updatewebsite", admin.UpdateWebsite)
