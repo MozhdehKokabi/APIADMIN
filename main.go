@@ -13,7 +13,7 @@ import (
 	_ "github.com/swaggo/echo-swagger/example/docs"
 )
 
-func main() {
+func main() { 
 	err := repository.InitDataBase()
 	if err != nil {
 		fmt.Println(err)

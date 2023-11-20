@@ -13,7 +13,8 @@ var user string = os.Getenv("POSTGRES_USER")
 var password string = os.Getenv("POSTGRES_PASSWORD")
 var dbname string = os.Getenv("POSTGRES_DBNAME")
 
-var Db *sql.DB
+var Db *sql.DB 
+ 
 
 func InitDataBase() error {
 	portint, _ := strconv.ParseInt(port, 10, 64)
