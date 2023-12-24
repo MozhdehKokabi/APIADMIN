@@ -1,19 +1,20 @@
 package config
 
 import (
-	"os"
-	// "path/to/your/postgres/package"
+	// "os"
+
+	// "fmt"
 
 	"github.com/spf13/viper"
 )
 
-var cfg = &env{}
+var cfg = &config{}
 
 func LoadConfig() error {
 	envFile := ".env"
-	if os.Getenv("DEV_MODE") == "1" {
-		envFile = ".env"
-	}
+	// if os.Getenv("DEV_MODE") == "1" {
+	// 	envFile = ".env"
+	// }
 
 	viper.SetConfigFile(envFile)
 	viper.AutomaticEnv()

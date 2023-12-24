@@ -1,7 +1,8 @@
 package main
 
 import (
-	"APIADMIN/CRUD"
+	admin "APIADMIN/CRUD"
+	"APIADMIN/config"
 	"APIADMIN/handlers"
 	"APIADMIN/repository"
 
@@ -13,8 +14,13 @@ import (
 	_ "github.com/swaggo/echo-swagger/example/docs"
 )
 
-func main() { 
-	err := repository.InitDataBase()
+func main() {
+	err := config.LoadConfig()
+	if err != nil {
+		fmt.Print(err)
+	}
+
+	err = repository.InitDataBase()
 	if err != nil {
 		fmt.Println(err)
 	}
