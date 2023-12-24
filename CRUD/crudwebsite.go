@@ -27,29 +27,28 @@ func Createwebsite(c echo.Context) error {
 	err = repository.Db.QueryRow("select id from students where id = $1", req.Id).Scan(&Id)
 	if req.Id == Id {
 		fmt.Println(newPerson)
-      
-    var req models.ReqWebsite
-	err := c.Bind(&req)
-	if err != nil {
 
-		return err
+		var req models.ReqWebsite
+		err := c.Bind(&req)
+		if err != nil {
+
+			return err
+		}
+		newWebsite := models.ReqWebsite{
+			Name:    req.Name,
+			Domain:  req.Domain,
+			Address: req.Address,
+		}
+
+		insertDynStmt := `insert into "website" ("name","address", "domain") values ($1, $2, $3)`
+
+		result, err := repository.Db.Exec(insertDynStmt, newWebsite.Name, newWebsite.Address, newWebsite.Domain)
+
+		fmt.Println(result)
+
 	}
-	newWebsite := models.ReqWebsite{
-		Name:    req.Name,
-		Domain:  req.Domain,
-		Address: req.Address,
-	}
-
-	insertDynStmt := `insert into "website" ("name","address", "domain") values ($1, $2, $3)`
-
-	result, err := repository.Db.Exec(insertDynStmt, newWebsite.Name, newWebsite.Address, newWebsite.Domain)
-
-	fmt.Println(result)
-
+	return c.JSON(http.StatusOK, "Successfully create website")
 }
-       return c.JSON(http.StatusOK, "Successfully create website")
-}
-
 
 func ReadWebsite(c echo.Context) error {
 	var req models.ReqWebsite
@@ -85,6 +84,7 @@ func ReadWebsite(c echo.Context) error {
 	newWebsite.Address = address
 	newWebsite.Name = name
 	fmt.Println(newWebsite)
+	
 
 	if domain == req.Domain {
 		return c.JSON(http.StatusOK, "wrong URL")

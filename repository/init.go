@@ -3,7 +3,8 @@ package repository
 import (
 	"database/sql"
 	"fmt"
-	"os"
+
+	 "os"
 	"strconv"
 )
 
@@ -13,8 +14,13 @@ var user string = os.Getenv("POSTGRES_USER")
 var password string = os.Getenv("POSTGRES_PASSWORD")
 var dbname string = os.Getenv("POSTGRES_DBNAME")
 
-var Db *sql.DB 
- 
+// var port string = "5432"
+// var host string = "localhost"
+// var user string = "postgres"
+// var password string = "moonmk2004"
+// var dbname string = "edu"
+
+var Db *sql.DB
 
 func InitDataBase() error {
 	portint, _ := strconv.ParseInt(port, 10, 64)

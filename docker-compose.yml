@@ -1,0 +1,22 @@
+version: "3.2"
+
+services:
+  postgres:
+    image: postgres
+    container_name: 'postgres3'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=moonmk2004
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init.sql:/data/db/init.sql
+
+    networks:
+      - crud_network
+
+
+
+networks:
+  crud_network:
+    driver: bridge
